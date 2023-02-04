@@ -76,7 +76,7 @@ const Triangle = struct {
             \\
             \\void main()
             \\{
-            \\    FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);
+            \\    FragColor = vec4(1.0f, 1.0f, 1.0f, 1.0f);
             \\}
         ;
         const fragmentCode = @as([]const u8, fragmentShaderSource);
@@ -154,7 +154,7 @@ pub fn main() void {
         c.glClearColor(0.0, 0.0, 0.0, 1.0);
         c.glClear(c.GL_COLOR_BUFFER_BIT);
 
-        c.glViewport(0, 0, 800, 800);
+        // c.glViewport(0, 0, 800, 800);
 
         triangle.draw();
 
