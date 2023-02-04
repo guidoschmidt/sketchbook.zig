@@ -6,11 +6,14 @@ pub fn build(b: *std.build.Builder) !void {
     const source = "./src/main.zig";
     const exe = b.addExecutable("engine", source);
 
-    exe.addIncludePath("/Users/gs/git/c++/glfw/include");
-    exe.addLibraryPath("/Users/gs/git/c++/glfw/build/src");
+    exe.addIncludePath("./libs/glfw/include");
+    exe.addLibraryPath("./libs/glfw/build/src");
 
+    exe.addIncludePath("./libs/glad/include");
+    exe.addCSourceFile("./libs/glad/src/glad.c", &[_][]const u8{ "-std=c99" });
+
+    exe.linkLibC();
     exe.linkSystemLibrary("glfw3");
-    exe.linkSystemLibrary("c");
 
     exe.setBuildMode(mode);
     exe.setTarget(target);
